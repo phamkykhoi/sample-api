@@ -4,6 +4,7 @@
     - Lowdb
     - ExpressJS Example
 - Author: `Khôi Pham`
+- Chi tiết hơn ở đây: https://suntech.edu.vn/api-danh-cho-frontend-developer.sunpost.html
 
 ## How to Setup
 - Step1: Install NodeJs (https://nodejs.org/en/)
