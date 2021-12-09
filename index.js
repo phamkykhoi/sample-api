@@ -5,23 +5,17 @@ const FileSync = require("lowdb/adapters/FileSync")
 const bodyParser = require("body-parser")
 const { nanoid } = require("nanoid")
 const db = lowDb(new FileSync('db.json'))
+const fs = require('fs');
+let rawdata = fs.readFileSync('db.json');
+let routes = JSON.parse(rawdata);
+
 const PORT = 8000;
 
 db.defaults({ products: [] }).write()
 
 const app = express()
 
-const modules = [
-  {
-    name: 'products'
-  },
-  {
-    name: 'users'
-  },
-  {
-    name: 'categories'
-  }
-]
+const modules = Object.keys(routes)
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -43,35 +37,35 @@ app.post('/api/login', (req, res) => {
   }
 })
 
-modules.forEach(item => {
-  app.get(`/api/${item.name}`, (req, res) => {
-    const data = db.get(`${item.name}`).value()
+modules.forEach(moduleName => {
+  app.get(`/api/${moduleName}`, (req, res) => {
+    const data = db.get(`${moduleName}`).value()
     return res.json(data)
   })
   
-  app.get(`/api/${item.name}/:id`, (req, res) => {
-    const data = db.get(`${item.name}`).find({ id: req.params.id })
+  app.get(`/api/${moduleName}/:id`, (req, res) => {
+    const data = db.get(`${moduleName}`).find({ id: req.params.id })
     return res.json(data)
   })
   
-  app.post(`/api/${item.name}`, (req, res) => {
+  app.post(`/api/${moduleName}`, (req, res) => {
     const note = req.body
-    db.get(`${item.name}`).push({
+    db.get(`${moduleName}`).push({
       ...note, id: nanoid()
     }).write()
   
     res.json({ success: true })
   })
   
-  app.put(`/api/${item.name}/:id`, (req, res) => {
+  app.put(`/api/${moduleName}/:id`, (req, res) => {
       const note = req.body
-      db.get(`${item.name}`).find({ id: req.params.id }).assign(note).write();
+      db.get(`${moduleName}`).find({ id: req.params.id }).assign(note).write();
     
       res.json({ success: true })
   })
   
-  app.delete(`/api/${item.name}/:id`, (req, res) => {
-    db.get(`${item.name}`).remove({ id: req.params.id }).write();
+  app.delete(`/api/${moduleName}/:id`, (req, res) => {
+    db.get(`${moduleName}`).remove({ id: req.params.id }).write();
     res.json({ success: true })
   })
 })
