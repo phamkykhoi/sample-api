@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "name": "Test product 3 (test edit)",
+      "price": "5000000",
+      "description": "product 3",
+      "id": "xWbk1Ck9-ba7uQZZiFxpL"
+    },
+    {
+      "name": "5645645",
+      "price": "645645",
+      "description": "65466546",
+      "id": "rovKMQRGxpAUUQet_dE7W"
+    },
+    {
+      "name": "ádasd",
+      "price": "234234",
+      "description": "sdsadas",
+      "id": "7A3folJnaRJJzsaHWAZ81"
+    },
+    {
+      "name": "Iphone 12",
+      "price": "25000000",
+      "description": "Thông tin chi tiết sản phẩm Iphone 12",
+      "id": "oPSzE11HGgfcH0LJ4aSfd"
+    }
+  ],
+  "users": [
+    {
+      "id": "5YsFNN42B14VYHhpDyizn",
+      "name": "Administrator",
+      "email": "admin@gmail.com",
+      "password": 123456
+    }
+  ]
+}
