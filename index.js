@@ -31,7 +31,11 @@ app.post('/api/login', (req, res) => {
     res.json({ success: false })
   } else {
 	  res.json({
-		  user: user,
+		  user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      },
 		  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
 	  })  
   }
