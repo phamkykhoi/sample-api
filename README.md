@@ -221,9 +221,9 @@
 ```
 {
     "user": {
+        "id": "id",
         "name": "Test user update",
         "email": "userupdate@gmail.com",
-        "password": ******
     },
     token: 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI....'
 }
